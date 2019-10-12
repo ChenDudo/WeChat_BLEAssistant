@@ -7,11 +7,9 @@ module.exports.len = function(arr) {
   return arr.length
 }
 </wxs>
-<button bindtap="openBluetoothAdapter">开始扫描</button>
-<button bindtap="stopBluetoothDevicesDiscovery">停止扫描</button>
-<button bindtap="closeBluetoothAdapter">结束流程</button>
-<button bindtap="openLED">打开</button>
-<button bindtap="closeLED">关闭</button>
+<button bindtap="openBluetoothAdapter">Start Scan</button>
+<button bindtap="openLED">Open LED</button>
+<button bindtap="closeLED">Close LED</button>
 
 
 <view class="devices_summary">已发现 {{devices.length}} 个外围设备：</view>
@@ -30,6 +28,7 @@ module.exports.len = function(arr) {
 </scroll-view>
 
 <view class="connected_info" wx:if="{{connected}}">
+<scroll-view class="charac_list" scroll-y scroll-with-animation>
   <view>
     <text>已连接到 {{name}}</text>
     <view class="operation">
@@ -40,5 +39,9 @@ module.exports.len = function(arr) {
   <view wx:for="{{chs}}" wx:key="index" style="font-size: 12px; margin-top: 10px;">
     <view>特性UUID: {{item.uuid}}</view>
     <view>特性值: {{item.value}}</view>
+  </view>
+  </scroll-view>
+  <view bindtap="getNotifydata">
+  <text>接收数据 : {{receiveData}} </text>
   </view>
 </view>
